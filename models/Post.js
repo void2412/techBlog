@@ -13,7 +13,11 @@ Post.init(
 		},
 		user_id:{
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: false,
+			references: {
+				model: 'user',
+				key: 'username'
+			}
 		},
 		title: {
 			type: DataTypes.STRING,
