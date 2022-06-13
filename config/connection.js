@@ -1,11 +1,11 @@
 requires('dotenv').config()
 const Sequelize = require('sequelize')
 
-let sqlModel
+let sequelize
 
 process.env.JAWSDB_URL ? 
-sqlModel = new Sequelize(process.env.JAWSDB_URL) : 
-sqlModel = new Sequelize(
+sequelize = new Sequelize(process.env.JAWSDB_URL) : 
+sequelize = new Sequelize(
 	process.env.db_name,
 	process.env.db_user,
 	process.env.db_password,
@@ -16,4 +16,4 @@ sqlModel = new Sequelize(
 	}
 )
 
-module.exports = sqlModel
+module.exports = sequelize
