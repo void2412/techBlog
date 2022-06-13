@@ -33,7 +33,7 @@ Post.init(
 		timestamp:true,
 		freezeTableName: true,
 		underscore: true,
-		modelName:'post'
+		modelName:'post',
 	}
 )
 

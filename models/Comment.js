@@ -37,7 +37,7 @@ Comment.init(
 		timestamp:true,
 		freezeTableName: true,
 		underscore: true,
-		modelName: 'comment'
+		modelName: 'comment',
 	}
 )
 
