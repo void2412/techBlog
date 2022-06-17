@@ -13,6 +13,7 @@ const port = process.env.PORT || 3001
 
 const hbs = handlebars.create({})
 
+// TODO check for parameter, might need config for login/idle
 const sess = {
 	secret: process.env.session_secret,
 	cookie: {
