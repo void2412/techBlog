@@ -11,7 +11,24 @@
 	{{!-- headers --}}
 	<header>
 		<nav class="navbar">
-			
+			<a class="navbar-brand" href="/">void Tech Blog</a>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a href="/" class="nav-link">Home</a>
+				</li>
+				<li class="nav-item">
+					<a href="/dashboard" class="nav-link">Dashboard</a>
+				</li>
+				{{#if logged_in}}
+				<li class="nav-item">
+					<a href="/logout" class="nav-link">Logout</a>
+				</li>
+				{{else}}
+				<li class="nav-item">
+					<a href="/login" class="nav-link">Login</a>
+				</li>
+				{{/if}}
+			</ul>
 		</nav>
 	</header>
 
