@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const session = require('express-session')
-const {Comment, Post, User} = require('./models/relationship')
+const {Comment, Post, User} = require('./models')
 const route = require('./controllers')
 
 const handlebars = require('express-handlebars')
