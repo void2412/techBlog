@@ -3,7 +3,7 @@ const express = require('express')
 const session = require('express-session')
 const {Comment, Post, User} = require('./models')
 const route = require('./controllers')
-
+const helpers = require('./utils/helpers')
 const handlebars = require('express-handlebars')
 const sequelize = require('./config/connection')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
@@ -12,7 +12,7 @@ const app = express()
 const port = process.env.PORT || 3001
 
 // TODO might need to add helper file for handlebar
-const hbs = handlebars.create({})
+const hbs = handlebars.create({helpers})
 
 // TODO check for parameter, might need config for login/idle
 const sess = {

@@ -1,0 +1,11 @@
+<div class="container">
+	{{#each comments as |comment|}}
+		{{#if (isEqual comment.user_id id)}}
+			{{> commentCardHighlight}}
+		{{else}}
+			{{> commentCard}}
+		{{/if}}
+	{{/each}}
+</div>
+
+<div ></div>

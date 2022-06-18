@@ -1,10 +1,9 @@
+<div class="container">
 {{#each posts as |post|}}
-	<div class = "card row">
-		<div class = "card-body">
-			<h2 class="card-title">{{post.title}}</h2>
-			<p class="card-subtitle text-muted">Posted by {{post.username}} on {{post.created_at}}</p>
-			<p class = "card-text">{{post.content}}</p>
-		</div>
-	</div>
-
+	{{#if (isEqual post.user_id id)}}
+		{{> postCardHighlight}}
+	{{else}}
+		{{> postCard}}
+	{{/if}}
 {{/each}}
+</div>

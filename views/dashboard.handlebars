@@ -1,0 +1,11 @@
+<div class="container">
+	{{#each posts as |post|}}
+		{{#if (isEqual post.user_id id)}}
+			{{> postCard}}
+		{{/if}}
+	{{/each}}
+</div>
+
+<div class = "container text-center">
+	<button class = "btn btn-primary">New Post</button>
+</div>
