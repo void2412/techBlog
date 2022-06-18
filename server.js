@@ -11,10 +11,9 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const app = express()
 const port = process.env.PORT || 3001
 
-// TODO might need to add helper file for handlebar
+
 const hbs = handlebars.create({helpers})
 
-// TODO check for parameter, might need config for login/idle
 const sess = {
 	secret: process.env.session_secret,
 	cookie: {

@@ -39,3 +39,5 @@ router.get('/post/:id', async (req, res) => {
 		res.status(500).json(e)
 	}
 })
+
+module.exports =router
