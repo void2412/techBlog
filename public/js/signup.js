@@ -1,15 +1,21 @@
-const loginHandler = async (event) => {
+const signupHandler = async (event) => {
 	event.preventDefault()
 
 	// collect input data
 	const username = document.querySelector('#userInput').value.trim()
 	const password = document.querySelector('#passwordInput').value.trim()
+	const confirmPassword = document.querySelector('#confirmPasswordInput').value.trim()
 
 	// errorText Object
 	const errorText = document.querySelector('#errorText')
 
-	if (username && password) {
-		const response = await fetch('/api/user/login',{
+	if (username && password && confirmPassword) {
+		if(password !== confirmPassword){
+			errorText.innerHTML = 'Password must match'
+			return
+		}
+
+		const response = await fetch('/api/user/signup',{
 			method: 'POST',
 			body: JSON.stringify({username,password}),
 			headers: { 'Content-Type': 'application/json' },
@@ -23,12 +29,15 @@ const loginHandler = async (event) => {
 		}
 	}
 	else if (username){
-		errorText.innerHTML = 'Password must not be empty'
+		errorText.innerHTML = 'Password fields must not be empty'
+	}
+	else if (password && confirmPassword){
+		errorText.innerHTML = 'Username must not be empty'
 	}
 	else{
-		errorText.innerHTML = 'Username must not be empty'
+		errorText.innerHTML = 'Password fields must not be empty'
 	}
 
 }
 
-document.querySelector('#loginForm').addEventListener('submit', loginHandler)
+document.querySelector('#signupForm').addEventListener('submit', signupHandler)
