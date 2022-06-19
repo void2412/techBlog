@@ -2,17 +2,23 @@
 	<div>
 		<div class="row">
 			<h1 class="col">{{title}}</h1>
-			<p class="col-6 text-secondary align-bottom text-right">Posted by {{user.username}} on {{formatDate createdAt}}</p>
+			{{#if post_owner}}
+				<p class="col-6 text-secondary align-bottom text-right">Posted by You on {{formatDate createdAt}}</p>
+			{{else}}
+				<p class="col-6 text-secondary align-bottom text-right">Posted by {{user.username}} on {{formatDate createdAt}}</p>
+			{{/if}}
 		</div>
 		<p>{{content}}</p>
 	</div>
+	{{#if comments}}
 	{{#each comments as |comment|}}
-		{{#if (isEqual comment.user_id id)}}
-			{{> commentCardHighlight}}
+		{{#if comment_owner}}
+			{{> commentCardOwn}}
 		{{else}}
 			{{> commentCard}}
 		{{/if}}
 	{{/each}}
+	{{/if}}
 </div>
 
 <div class="container">

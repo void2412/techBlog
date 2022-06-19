@@ -1,8 +1,9 @@
 <div class="container">
 {{#each posts as |post|}}
-	{{!-- {{#if (isEqual post.user_id id)}}
-		{{> postCardHighlight}}
-	{{else}} --}}
+	{{#if owner}}
+		{{> postCardOwn}}
+	{{else}}
 		{{> postCard}}
+	{{/if}}
 {{/each}}
 </div>

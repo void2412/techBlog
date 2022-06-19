@@ -1,10 +1,5 @@
 <div class = "card row ml-5">
 	<div class = "card-body">
-		{{#if (isEqual user_id req_id)}}
-			<h2 class="card-title text-success">{{title}}</h2>
-		{{else}}
-			<h2 class="card-title">{{title}}</h2>
-		{{/if}}
 		<p class="card-subtitle text-muted">Commented by {{user.username}} on {{formatDate createdAt}}</p>
 		<p class = "card-text">{{content}}</p>
 	</div>

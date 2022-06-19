@@ -9,13 +9,20 @@ router.get('/', async (req, res) => {
 		})
 
 		const posts = postData.map((post) => post.get({plain: true}))
-
+		
+		if(req.session.logged_in === true){
+			posts.forEach((post)=>{
+				if (req.session.user_id == post.user_id){
+					post.owner = true
+				}
+			})
+		}
+		
 		res.render('homepage',{
 			posts,
-			logged_in: req.session.logged_in,
-			req_id: req.session.user_id
+			logged_in: req.session.logged_in
 		})
-		console.log(req.session.user_id)
+		
 	}
 	catch (e){
 		res.status(500).json(e)
@@ -26,8 +33,7 @@ router.get('/post/:id', async (req, res) => {
 	try {
 		const postData = await Post.findByPk(req.params.id, {
 			include:[{
-				model: Comment, include:{model: User, attributes: ['username']},
-				required: true
+				model: Comment, include:{model: User, attributes: ['username']}
 			}, {
 				model: User, attributes: ['username']
 			}]
@@ -35,9 +41,19 @@ router.get('/post/:id', async (req, res) => {
 
 		const posts = postData.get({plain: true})
 		console.log(posts)
+		if (posts.user_id === req.session.user_id){
+			posts.post_owner = true
+		}
+
+		posts.comments.forEach((comment)=>{
+			if(comment.user_id === req.session.user_id){
+				comment.comment_owner=true
+			}
+		})
+
 		res.render('postDetails', {
 			...posts,
-			req_id: req.session.user_id
+			logged_in: req.session.logged_in
 		})
 	}
 	catch (e){
@@ -45,4 +61,45 @@ router.get('/post/:id', async (req, res) => {
 	}
 })
 
+router.get('/dashboard', authenticate, async (req, res) => {
+	try{
+		if(req.session.logged_in){
+			const userData = await User.findByPk(req.session.user_id,{
+				attributes: {exclude: ['password']},
+				include: [{model: Post}]
+			})
+
+			const user = userData.get({plain: true})
+			
+			res.render('dashboard', {
+				logged_in: req.session.logged_in,
+				...user
+			})
+		}
+		else{
+			res.redirect('/login')
+		}
+	}
+	catch (e){
+		res.status(500).json(e)
+	}
+})
+
+router.get('/login', async (req, res) => {
+	if (req.session.logged_in){
+		res.redirect('/dashboard')
+		return
+	}
+
+	res.render('login')
+})
+
+router.get('/signup', async (req, res) => {
+	if (req.session.logged_in){
+		res.redirect('/dashboard')
+		return
+	}
+
+	res,render('signup')
+})
 module.exports =router

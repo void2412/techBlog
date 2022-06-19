@@ -1,5 +1,6 @@
 <div class="container">
-	<form>
+	<p class="text-danger" id="errorText"></p>
+	<form id="loginForm">
 		<div class="form-group">
 			<label for="userInput">Username</label>
 			<input type="text" class="form-control" id="userInput" placeholder="Enter Username">
@@ -8,7 +9,9 @@
 			<label for="passwordInput">Password</label>
 			<input type="password" class="form-control" id="passwordInput" placeholder="Enter Password">
 		</div>
-		<a href="/signup">Need an account? Sign up here</a>
-		<button type="submit" class="btn btn-primary"></button>
+		<p><a href="/signup">Need an account? Sign up here</a></p>
+		<button type="submit" class="btn btn-primary">Login</button>
 	</form>
 </div>
+
+<script src="./js/login.js"></script>

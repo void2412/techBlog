@@ -17,10 +17,11 @@ const hbs = handlebars.create({ helpers })
 const sess = {
 	secret: process.env.session_secret,
 	cookie: {
-		maxAge: 1000 * 60 * 3
+		maxAge: 1000 * 60 * 60
 	},
 	resave: false,
 	saveUninitialized: false,
+	rolling: true,
 	store: new SequelizeStore({
 		db:sequelize
 	})
