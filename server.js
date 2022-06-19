@@ -12,7 +12,7 @@ const app = express()
 const port = process.env.PORT || 3001
 
 
-const hbs = handlebars.create({helpers})
+const hbs = handlebars.create({ helpers })
 
 const sess = {
 	secret: process.env.session_secret,

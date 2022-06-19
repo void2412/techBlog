@@ -1,7 +1,10 @@
 <div class = "card row">
 	<div class = "card-body">
-		<h2 class="card-title">{{post.title}}</h2>
-		<p class="card-subtitle text-muted">Posted by {{post.username}} on {{post.created_at}}</p>
-		<p class = "card-text">{{post.content}}</p>
+		<a href="#" class="text-decoration-none">
+			<h2 class="card-title">{{title}}</h2>
+		</a>
+		<p class="card-subtitle text-muted">Posted by {{user.username}} on {{formatDate createdAt}}</p>
+		<p class = "card-text">{{content}}</p>
+		
 	</div>
 </div>
