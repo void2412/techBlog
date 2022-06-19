@@ -106,7 +106,11 @@ router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
 			return
 		}
 
+		if(!postData){
+			res.status(404).send('No Post Found')
+		}
 		const post= postData.get({plain: true})
+		
 
 		res.render('editPost',
 		{logged_in: req.session.logged_in,
