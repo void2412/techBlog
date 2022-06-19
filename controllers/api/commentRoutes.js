@@ -2,10 +2,11 @@ const router = require('express').Router()
 const {Comment} = require('../../models')
 const authenticate = require('../../utils/authentication')
 
-router.post('/',authenticate, async (req, res)=>{
+router.post('/:post_id',authenticate, async (req, res)=>{
 	try {
 		const newComment = await Comment.create({
 			...req.body,
+			post_id: req.params.post_id,
 			user_id: req.session.user_id
 		})
 
@@ -16,7 +17,7 @@ router.post('/',authenticate, async (req, res)=>{
 	}
 })
 
-router.put('/:id', authenticate, async (req, res)=>{
+router.put('/:id/:post_id', authenticate, async (req, res)=>{
 	try {
 		const commentData = await Comment.update({
 			content: req.body.content
@@ -25,7 +26,7 @@ router.put('/:id', authenticate, async (req, res)=>{
 			where: {
 				id: req.params.id,
 				user_id: req.session.user_id,
-				post_id: req.body.post_id
+				post_id: req.params.post_id
 			}
 		})
 
@@ -41,13 +42,13 @@ router.put('/:id', authenticate, async (req, res)=>{
 	}
 })
 
-router.delete('/:id', authenticate, async(req,res)=>{
+router.delete('/:id/:post_id', authenticate, async(req,res)=>{
 	try{
 		const commentData = await Comment.destroy({
 			where:{
 				id: req.params.id,
 				user_id: req.session.user_id,
-				post_id: req.body.post_id
+				post_id: req.params.post_id
 			}
 		})
 
