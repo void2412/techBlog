@@ -1,9 +1,19 @@
 <div class="container">
 	{{#each posts as |post|}}
-		{{> postCardOwn}}
+		<div class = "card">
+			<div class = "card-body">
+				<a href="/dashboard/edit/{{id}}" class="text-decoration-none">
+					<h2 class="card-title">{{title}}</h2>
+				</a>
+				<p class="card-subtitle text-muted">Posted by You on {{formatDate createdAt}}</p>
+				<p class = "card-text">{{content}}</p>
+			</div>
+		</div>		
 	{{/each}}
 </div>
 
 <div class = "container text-center">
-	<button class = "btn btn-primary">New Post</button>
+	<button class = "btn btn-primary mt-2" id="newPostBtn">New Post</button>
 </div>
+
+<script src="/js/newPost.js"></script>

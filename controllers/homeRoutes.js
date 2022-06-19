@@ -38,9 +38,12 @@ router.get('/post/:id', async (req, res) => {
 				model: User, attributes: ['username']
 			}]
 		})
-
+		if(!postData){
+			res.status(404).send('No Post Found')
+			return
+		}
 		const posts = postData.get({plain: true})
-		console.log(posts)
+		
 		if (posts.user_id === req.session.user_id){
 			posts.post_owner = true
 		}
@@ -79,6 +82,35 @@ router.get('/dashboard', authenticate, async (req, res) => {
 		else{
 			res.redirect('/login')
 		}
+	}
+	catch (e){
+		res.status(500).json(e)
+	}
+})
+
+router.get('/dashboard/new', authenticate, async (req, res) => {
+	try{
+			res.render('newPost', 
+			{logged_in: req.session.logged_in})
+	}
+	catch (e){
+		res.status(500).json(e)
+	}
+})
+
+router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
+	try{
+		const postData = await Post.findByPk(req.params.id)
+		if (!postData){
+			res.status(404).send('No Post Found')
+			return
+		}
+
+		const post= postData.get({plain: true})
+
+		res.render('editPost',
+		{logged_in: req.session.logged_in,
+		...post})
 	}
 	catch (e){
 		res.status(500).json(e)
