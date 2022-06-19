@@ -35,6 +35,7 @@ router.put('/:id',authenticate, async (req, res) => {
 
 		if(!postData){
 			res.status(404).json({message:'No post found'})
+			return
 		}
 		
 		res.status(200).json(postData)
@@ -55,6 +56,7 @@ router.delete('/:id', authenticate, async (req, res) => {
 
 		if (!postData){
 			res.status(404).json({message: 'No post found'})
+			return
 		}
 
 		res.status(200).json(postData)

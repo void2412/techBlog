@@ -1,6 +1,11 @@
 <div class = "card row ml-5">
 	<div class = "card-body">
 		<p class="card-subtitle text-muted">Commented by You on {{formatDate createdAt}}</p>
-		<p class = "card-text text-success">{{content}}</p>
+		<p class = "card-text text-success first-layer" id="commentContent">{{content}}</p>
+		<textarea style="display:none;" class="form-control second-layer">{{content}}</textarea>
+		<button class="first-layer btn btn-primary" id="editBtn">Edit</button>
+		<button class="first-layer btn btn-danger" id="deleteBtn">Delete</button>
+		<button style="display:none;" class="second-layer btn btn-primary" id="submitEditBtn">Submit</button>
+		<button style="display:none;" class="second-layer btn btn-danger" id="cancelEditBtn">Cancel</button>
 	</div>
 </div>
