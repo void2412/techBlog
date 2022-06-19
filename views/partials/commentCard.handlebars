@@ -1,7 +1,11 @@
-<div class = "card row">
+<div class = "card row ml-5">
 	<div class = "card-body">
-		<h2 class="card-title">{{comment.title}}</h2>
-		<p class="card-subtitle text-muted">Posted by {{comment.username}} on {{comment.created_at}}</p>
-		<p class = "card-text">{{comment.content}}</p>
+		{{#if (isEqual user_id req_id)}}
+			<h2 class="card-title text-success">{{title}}</h2>
+		{{else}}
+			<h2 class="card-title">{{title}}</h2>
+		{{/if}}
+		<p class="card-subtitle text-muted">Commented by {{user.username}} on {{formatDate createdAt}}</p>
+		<p class = "card-text">{{content}}</p>
 	</div>
 </div>

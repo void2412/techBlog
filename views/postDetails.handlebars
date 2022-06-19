@@ -1,4 +1,11 @@
 <div class="container">
+	<div>
+		<div class="row">
+			<h1 class="col">{{title}}</h1>
+			<p class="col-6 text-secondary align-bottom text-right">Posted by {{user.username}} on {{formatDate createdAt}}</p>
+		</div>
+		<p>{{content}}</p>
+	</div>
 	{{#each comments as |comment|}}
 		{{#if (isEqual comment.user_id id)}}
 			{{> commentCardHighlight}}

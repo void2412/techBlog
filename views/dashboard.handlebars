@@ -1,6 +1,6 @@
 <div class="container">
 	{{#each posts as |post|}}
-		{{#if (isEqual post.user_id id)}}
+		{{#if (isEqual post.user_id req_id)}}
 			{{> postCard}}
 		{{/if}}
 	{{/each}}
