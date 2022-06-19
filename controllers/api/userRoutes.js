@@ -5,7 +5,7 @@ router.post('/login', async (req, res) => {
 	try {
 		// find username
 		const userData = await User.findOne({where:{username: req.body.username}})
-		console.log(userData)
+		
 		if(!userData){
 			res.status(400).json({message: 'Incorrect email or password, please try again'})
 			return
@@ -24,16 +24,20 @@ router.post('/login', async (req, res) => {
 			req.session.logged_in = true
 			res.status(200).json({user: userData, message: 'You are now logged in'})
 		})
-
-		
-
 	}
 	catch (e){
 		res.status(400).json(e)
 	}
 })
 
-
+router.post('/signup', async (req, res) => {
+	try{
+		const userData = await User.create
+	}
+	catch (e){
+		res.status(400).json(e)
+	}
+})
 
 
 

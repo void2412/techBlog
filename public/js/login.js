@@ -18,7 +18,8 @@ const loginHandler = async (event) => {
 			document.location.replace('/dashboard')
 		}
 		else{
-			errorText.innerHTML = response.message
+			const error = await response.json()
+			errorText.innerHTML = error.message
 		}
 	}
 	else if (username){
