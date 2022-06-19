@@ -28,12 +28,12 @@ User.init(
 	{
 		hooks:{
 			beforeCreate: async (newUserData) => {
-				const salt = await bcrypt.genSalt(saltRounds)
+				const salt = await bcrypt.genSalt()
 				newUserData.password = await bcrypt.hash(newUserData.password, salt)
 				return newUserData
 			},
 			beforeUpdate: async (updatedUserData) => {
-				const salt = await bcrypt.genSalt(saltRounds)
+				const salt = await bcrypt.genSalt()
 				updatedUserData.password = await bcrypt.hash(updatedUserData.password, salt)
 				return updatedUserData
 			}
