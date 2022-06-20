@@ -98,7 +98,7 @@ router.get('/dashboard/new', authenticate, async (req, res) => {
 	}
 })
 
-router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
+router.get('/dashboard/:id', authenticate, async (req, res,) =>{
 	try{
 		const postData = await Post.findByPk(req.params.id)
 
@@ -108,7 +108,7 @@ router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
 		}
 
 		const post= postData.get({plain: true})
-		console.log(post)
+		
 
 		res.render('editPost',
 		{
