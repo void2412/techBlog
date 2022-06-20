@@ -107,12 +107,12 @@ router.get('/dashboard/:id', authenticate, async (req, res,) =>{
 			return
 		}
 
-		const post= postData.get({plain: true})
+		const posts= postData.get({plain: true})
 		
 
 		res.render('editBlog',
 		{
-			...post,
+			...posts,
 			logged_in: req.session.logged_in
 		})
 	}
