@@ -32,17 +32,22 @@
   ### Demo
   Opening the website:
 
+  ![homepage](./readmeAssets/homepage.gif)
+
   Go to others link without login:
+  ![other_link](./readmeAssets/otherLinkNoLogin.gif)
 
   Submitting comment without login:
+  ![comment_no_login](./readmeAssets/commentNoLogin.gif)
 
   Go to dashboard after login:
+  ![dashboard](./readmeAssets/go%20to%20dashboard%20after%20login.gif)
 
-  click on a post in homepage after login:
+  Add/Update/Delete post:
+  ![post](./readmeAssets/add-update-delete%20post.gif)
 
-  click on a post in dashboard after login:
-
-  
+  Add/Update/Delete comment:
+  ![post](./readmeAssets/add-update-delete%20comment.gif)
 
 
   ## License
