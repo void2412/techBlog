@@ -112,7 +112,7 @@ router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
 
 		res.render('editPost',
 		{
-			post,
+			...post,
 			logged_in: req.session.logged_in
 		})
 	}
