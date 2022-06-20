@@ -98,7 +98,7 @@ router.get('/dashboard/new', authenticate, async (req, res) => {
 	}
 })
 
-router.get('/dashboard/:id', authenticate, async (req, res,) =>{
+router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
 	try{
 		const postData = await Post.findByPk(req.params.id)
 
@@ -107,10 +107,10 @@ router.get('/dashboard/:id', authenticate, async (req, res,) =>{
 			return
 		}
 
-		const posts= postData.get({plain: true})
+		const post= postData.get({plain: true})
 		
-		res.render('editBlog',{
-			...posts,
+		res.render('editPost',{
+			...post,
 			logged_in: req.session.logged_in
 		})
 	}
