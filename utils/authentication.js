@@ -7,4 +7,13 @@ const authenticate = (req, res, next) => {
 	}
   }
 
-  module.exports = authenticate
+const authenticatePost = (req, res, next) => {
+	if(!req.session.logged_in) {
+		res.status(401).send('Unauthorized')
+		return
+	} else {
+		next()
+	}
+}
+
+  module.exports ={authenticate, authenticatePost}

@@ -9,12 +9,12 @@ const addCommentHandler = async (event)=>{
 			body: JSON.stringify({content}),
 			headers: {'Content-Type': 'application/json'}
 		})
-
+		console.log(response)
 		if (response.ok){
 			document.location.replace(`/post/${post_id}`)
 		}
 		else{
-			alert('Something went wrong. Failed to add comment')
+			document.location.replace('/login')
 		}
 	}
 }
@@ -64,7 +64,7 @@ const commentListHandler = async (event)=>{
 			document.location.replace(`/post/${post_id}`)
 		}
 		else{
-			alert('Something went wrong. Failed to delete comment')
+			document.location.replace('/login')
 		}
 	}
 
@@ -84,7 +84,7 @@ const commentListHandler = async (event)=>{
 			document.location.replace(`/post/${post_id}`)
 		}
 		else{
-			alert('Something went wrong. Failed to edit comment')
+			document.location.replace('/login')
 		}
 	}
 }
