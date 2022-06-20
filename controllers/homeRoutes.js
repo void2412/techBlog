@@ -109,9 +109,7 @@ router.get('/dashboard/:id', authenticate, async (req, res,) =>{
 
 		const posts= postData.get({plain: true})
 		
-
-		res.render('editBlog',
-		{
+		res.render('editBlog',{
 			...posts,
 			logged_in: req.session.logged_in
 		})
