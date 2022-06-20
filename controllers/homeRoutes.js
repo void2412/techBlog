@@ -101,7 +101,7 @@ router.get('/dashboard/new', authenticate, async (req, res) => {
 router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
 	try{
 		const postData = await Post.findByPk(req.params.id)
-		
+
 		if (!postData){
 			res.status(404).send('No Post Found')
 			return
@@ -111,8 +111,10 @@ router.get('/dashboard/edit/:id', authenticate, async (req, res,) =>{
 		
 
 		res.render('editPost',
-		{logged_in: req.session.logged_in,
-		...post})
+		{
+			...post,
+			logged_in: req.session.logged_in
+		})
 	}
 	catch (e){
 		res.status(500).json(e)
